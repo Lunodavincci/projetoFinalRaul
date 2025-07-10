@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Conexão Cidadã</title>
+    <link rel="stylesheet" href="../styles/style.css"> </head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="../index.html">Conexão Cidadã</a></h1>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li>
+                    <a href="../pages/oportunidades.html">Oportunidades <span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../pages/oportunidades.html?categoria=meio-ambiente">Meio Ambiente</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=educacao">Educação</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=saude">Saúde e Bem-Estar</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=animais">Animais</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=diversidade">Direitos Humanos e Diversidade</a></li>
+                        <li><a href="../pages/oportunidades.html">Todas as Oportunidades</a></li>
+                    </ul>
+                </li>
+                <li><a href="../pages/sobre.html">Sobre</a></li>
+                <li><a href="../pages/contato.html" class="active">Contato</a></li> </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact-form-section">
+            <h2>Entre em Contato Conosco!</h2>
+            <p>Preencha o formulário abaixo para enviar sua mensagem ou se candidatar a uma oportunidade.</p>
+
+            <form id="contactForm">
+                <fieldset>
+                    <legend>Seus Dados</legend>
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+
+                    <label for="telefone">Telefone (opcional):</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+                    
+                    <label for="tipo-contato">Motivo do Contato:</label>
+                    <select id="tipo-contato" name="tipo-contato" required>
+                        <option value="">Selecione...</option>
+                        <option value="duvida">Dúvida Geral</option>
+                        <option value="sugestao">Sugestão</option>
+                        <option value="candidatura">Candidatura a Oportunidade</option>
+                        <option value="parceria">Proposta de Parceria</option>
+                        <option value="outro">Outro Assunto</option>
+                    </select>
+
+                    <label for="periodo">Disponibilidade (para voluntariado):</label>
+                    <div> <input type="radio" id="manhã" name="periodo" value="manhã">
+                        <label for="manhã">Manhã</label>
+                        <input type="radio" id="tarde" name="periodo" value="tarde">
+                        <label for="tarde">Tarde</label>
+                        <input type="radio" id="noite" name="periodo" value="noite">
+                        <label for="noite">Noite</label>
+                        <input type="radio" id="qualquer" name="periodo" value="qualquer">
+                        <label for="qualquer">Qualquer</label>
+                    </div>
+
+                    <label for="mensagem">Sua Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="6" placeholder="Descreva sua mensagem ou interesse aqui..." required></textarea>
+
+                    <div class="form-buttons">
+                        <button type="submit">Enviar Mensagem</button>
+                        <button type="reset">Limpar Formulário</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <section id="dados-enviados">
+                <h3>Dados Recebidos (apenas para demonstração)</h3>
+                <div id="output">
+                    </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Conexão Cidadã. Todos os direitos reservados.</p>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>
