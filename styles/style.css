@@ -1,0 +1,848 @@
+/* ---------------------------------------------------- */
+/* 1. ESTILOS GERAIS E RESET BÁSICO                     */
+/* ---------------------------------------------------- */
+:root {
+    /* Cores */
+    --primary-color: #28a745; /* Um verde vibrante para o tema social/natureza */
+    --secondary-color: #007bff; /* Um azul para acentuar */
+    --text-color: #333;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --white: #ffffff;
+    --border-color: #dee2e6;
+
+    /* Fontes */
+    --font-heading: 'Roboto', sans-serif; /* Sugestão: Importar do Google Fonts */
+    --font-body: 'Open Sans', sans-serif; /* Sugestão: Importar do Google Fonts */
+
+    /* Espaçamentos */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o footer fique no final da página */
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--dark-gray);
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Estilo para botões */
+.button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #218838; /* Um tom mais escuro do verde primário */
+    color: var(--white);
+}
+
+/* Conteúdo principal (main) para centralizar e dar espaçamento */
+main {
+    flex-grow: 1; /* Faz o main ocupar o espaço restante */
+    padding: var(--spacing-lg) 0;
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    width: 90%; /* Largura padrão para telas menores */
+}
+
+/* ---------------------------------------------------- */
+/* 2. HEADER E NAVEGAÇÃO (Incluindo DropDown)           */
+/* ---------------------------------------------------- */
+header {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: var(--spacing-md) 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md); /* Padding lateral para mobile */
+}
+
+/* Logo */
+.logo {
+    display: flex; /* Para alinhar a imagem e o texto se for o caso */
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Altura da imagem do logo */
+    margin-right: var(--spacing-sm); /* Espaço entre logo e título (se houver) */
+}
+
+.logo h1 { /* Se você optar por usar h1 em vez de imagem no logo */
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.logo a {
+    color: var(--white);
+}
+
+/* Menu de Navegação Principal */
+header nav ul {
+    list-style: none;
+    display: flex; /* Menu horizontal por padrão para desktop */
+}
+
+header nav ul li {
+    position: relative; /* Necessário para o DropDown */
+    margin-left: var(--spacing-lg); /* Espaçamento entre itens do menu */
+}
+
+header nav ul li a {
+    color: var(--white);
+    font-weight: bold;
+    padding: var(--spacing-sm) 0;
+    display: block; /* Para o padding funcionar */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active { /* Estilo para a página ativa */
+    color: var(--primary-color);
+}
+
+/* Seta do DropDown */
+.arrow {
+    margin-left: 5px;
+    font-size: 0.8em;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+/* DropDown Menu */
+.dropdown-menu {
+    display: none; /* Oculta o dropdown por padrão */
+    position: absolute;
+    top: 100%; /* Posiciona abaixo do item pai */
+    left: 0;
+    background-color: var(--dark-gray); /* Cor de fundo do dropdown */
+    list-style: none;
+    min-width: 180px; /* Largura mínima do dropdown */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Garante que fique acima de outros elementos */
+    border-radius: 0 0 5px 5px;
+    overflow: hidden; /* Para o border-radius funcionar */
+}
+
+.dropdown-menu li {
+    margin: 0; /* Reseta margem interna */
+}
+
+.dropdown-menu li a {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--white);
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Exibe o dropdown ao passar o mouse sobre o item pai */
+header nav ul li:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Rotação da seta ao passar o mouse */
+header nav ul li:hover > a .arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ---------------------------------------------------- */
+/* 3. FOOTER                                            */
+/* ---------------------------------------------------- */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: auto; /* Empurra o footer para o final da página */
+}
+
+/* ---------------------------------------------------- */
+/* 4. ESTILOS ESPECÍFICOS POR PÁGINA                    */
+/* ---------------------------------------------------- */
+
+/* --- INDEX.HTML --- */
+#hero {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    position: relative; /* Para posicionar a imagem de fundo ou como overlay */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    opacity: 0.3; /* Imagem um pouco transparente para o texto ficar visível */
+    z-index: 0;
+}
+
+#hero article {
+    position: relative; /* Garante que o texto fique acima da imagem */
+    z-index: 1;
+    max-width: 800px;
+}
+
+#hero h2 {
+    color: var(--white);
+    font-size: 2.5em;
+    margin-bottom: var(--spacing-sm);
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-md);
+}
+
+#features {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--white);
+}
+
+#features h2 {
+    margin-bottom: var(--spacing-lg);
+    font-size: 2em;
+}
+
+#features article {
+    display: inline-block; /* Para que os artigos fiquem lado a lado */
+    width: 30%; /* Largura aproximada para 3 colunas em desktop */
+    vertical-align: top; /* Alinha o topo das caixas */
+    margin: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    width: 60px; /* Tamanho dos ícones */
+    height: 60px;
+    margin-bottom: var(--spacing-sm);
+}
+
+#testimonials {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--light-gray);
+}
+
+#testimonials h2 {
+    margin-bottom: var(--spacing-lg);
+    font-size: 2em;
+}
+
+.testimonial-card {
+    display: inline-block;
+    width: 45%; /* Para duas colunas */
+    vertical-align: top;
+    margin: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Imagem redonda */
+    object-fit: cover;
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-card h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--primary-color);
+}
+
+
+/* --- OPORTUNIDADES.HTML --- */
+#opportunities-list {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#opportunities-list h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+#opportunities-list > p { /* O parágrafo logo abaixo do h2 */
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: #666;
+}
+
+.opportunity-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex; /* Para alinhar imagem e texto */
+    gap: var(--spacing-md);
+    align-items: flex-start; /* Alinha a imagem e o texto no topo */
+}
+
+.opportunity-image {
+    width: 120px; /* Largura da imagem na oportunidade */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0; /* Impede que a imagem encolha */
+}
+
+.opportunity-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-xs);
+}
+
+.opportunity-card p {
+    font-size: 0.95em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.opportunity-card aside {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: var(--spacing-sm);
+}
+
+
+/* --- CONTATO.HTML (Formulário) --- */
+#contact-form-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#contact-form-section h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+#contact-form-section > p { /* O parágrafo logo abaixo do h2 */
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: #666;
+}
+
+#contactForm fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+#contactForm legend {
+    font-weight: bold;
+    color: var(--dark-gray);
+    padding: 0 var(--spacing-sm);
+    font-size: 1.1em;
+}
+
+#contactForm label {
+    display: block; /* Cada label em uma nova linha */
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm input[type="tel"],
+#contactForm select,
+#contactForm textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1em;
+}
+
+#contactForm textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px;
+}
+
+/* Estilo para grupo de rádio buttons (que agora é um <p>) */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    gap: var(--spacing-md); /* Espaçamento entre os itens */
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md); /* Espaçamento abaixo do grupo */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: var(--spacing-xs); /* Espaço entre o rádio e sua label */
+}
+
+.radio-group label {
+    margin: 0; /* Reseta a margem padrão das labels de input */
+    display: inline-block; /* Para alinhar com o rádio button */
+    font-weight: normal;
+}
+
+/* Estilo para os botões do formulário (que agora é um <p>) */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: var(--spacing-md); /* Espaço entre os botões */
+    margin-top: var(--spacing-lg);
+}
+
+.form-buttons button {
+    flex: 1; /* Faz os botões ocuparem o mesmo espaço em mobile */
+    max-width: 200px; /* Limita a largura em desktop */
+}
+
+.form-buttons button[type="reset"] {
+    background-color: #6c757d; /* Cinza para o botão Limpar */
+}
+
+.form-buttons button[type="reset"]:hover {
+    background-color: #5a6268;
+}
+
+/* Seção de Dados Enviados (para JS) */
+#dados-enviados {
+    background-color: var(--light-gray);
+    border: 1px dashed var(--border-color);
+    border-radius: 5px;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    display: none; /* Oculto por padrão, JavaScript vai exibir */
+}
+
+#dados-enviados h3 {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-md);
+}
+
+#output p {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95em;
+}
+
+#output strong {
+    color: var(--dark-gray);
+}
+
+/* --- SOBRE.HTML --- */
+#about-us {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#about-us h2, #about-us h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-image {
+    display: block; /* Centraliza a imagem */
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#about-us article {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color); /* Separador entre artigos */
+}
+
+#about-us article:last-of-type {
+    border-bottom: none; /* Remove o separador do último */
+}
+
+#about-us ul {
+    list-style: none; /* Remove bolinhas */
+    padding-left: 0;
+}
+
+#about-us ul li {
+    margin-bottom: var(--spacing-sm);
+    padding-left: 25px; /* Espaço para um ícone customizado se quiser */
+    position: relative;
+}
+
+#about-us ul li::before { /* Exemplo de ícone customizado com CSS */
+    content: '✅'; /* Um checkmark Unicode */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+#our-team {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+#our-team h3 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.team-member {
+    display: inline-block;
+    width: 45%; /* Para duas colunas em desktop */
+    vertical-align: top;
+    margin: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.team-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-sm);
+    border: 3px solid var(--primary-color);
+}
+
+.team-member h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--dark-gray);
+}
+.team-member p {
+    font-size: 0.9em;
+    color: #777;
+}
+
+
+/* ---------------------------------------------------- */
+/* 5. MEDIA QUERIES (RESPONSIVIDADE)                    */
+/* ---------------------------------------------------- */
+
+/* --- Estilos para Smartphones (max-width: 767px) --- */
+@media (max-width: 767px) {
+    header nav {
+        flex-direction: column; /* Empilha logo e menu */
+        align-items: flex-start;
+    }
+
+    header nav .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+    header nav .logo a {
+        display: block; /* Para o logo ocupar a largura total */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menu vertical */
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador para mobile */
+        width: 100%;
+    }
+
+    header nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    header nav ul li a {
+        padding: var(--spacing-md); /* Mais padding para cliques em mobile */
+        text-align: center;
+    }
+
+    /* Dropdown em Mobile: pode ser diferente, ou usar JS para toggle */
+    .dropdown-menu {
+        position: static; /* Sai do fluxo absoluto */
+        width: 100%; /* Ocupa a largura total do pai */
+        background-color: rgba(0, 0, 0, 0.2); /* Um fundo mais suave */
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: var(--spacing-md); /* Indentação para sub-itens */
+    }
+
+    .dropdown-menu li a {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9em;
+    }
+
+    /* Oculta seta em mobile se não for interativa */
+    header nav ul li a .arrow {
+        display: none;
+    }
+
+    /* Ajustes para seções de conteúdo */
+    #features article,
+    .testimonial-card,
+    .team-member {
+        width: 100%; /* Ocupa a largura total em mobile */
+        margin: var(--spacing-sm) 0; /* Margem apenas vertical */
+    }
+
+    .opportunity-card {
+        flex-direction: column; /* Imagem acima do texto em mobile */
+        align-items: center;
+        text-align: center;
+    }
+
+    .opportunity-image {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-buttons {
+        flex-direction: column; /* Botões empilhados em mobile */
+        align-items: center;
+    }
+
+    .form-buttons button {
+        max-width: 100%; /* Ocupa largura total */
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* --- Estilos para Computadores (min-width: 992px) --- */
+@media (min-width: 992px) {
+    /* Main volta a ter padding lateral */
+    main {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    /* Header Nav */
+    header nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0; /* Remove padding lateral pois main já tem */
+    }
+
+    /* Menu de Navegação Principal (garante horizontal) */
+    header nav ul {
+        flex-direction: row;
+        width: auto;
+    }
+
+    header nav ul li {
+        border-bottom: none;
+    }
+
+    header nav ul li a {
+        padding: var(--spacing-sm) var(--spacing-md); /* Ajusta padding para desktop */
+        text-align: left; /* Volta alinhamento padrão */
+    }
+    
+    /* Dropdown em Desktop */
+    .dropdown-menu {
+        position: absolute; /* Volta a ser absoluto */
+        background-color: var(--dark-gray); /* Fundo normal */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 5px 5px;
+        padding-left: 0; /* Remove indentação */
+    }
+
+    /* Exibe seta em desktop */
+    header nav ul li a .arrow {
+        display: inline;
+    }
+
+    /* Layout em colunas para desktop */
+    #features {
+        display: flex;
+        flex-wrap: wrap; /* Permite quebrar linha */
+        justify-content: center; /* Centraliza as colunas */
+        gap: var(--spacing-md); /* Espaçamento entre as colunas */
+    }
+    #features h2 { /* Título acima do flexbox */
+        width: 100%;
+    }
+    #features article {
+        width: calc(33.333% - var(--spacing-md) * 2 / 3); /* 3 colunas, considerando gap */
+        margin: 0; /* Reset de margens individuais */
+    }
+
+    #testimonials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+    #testimonials h2 {
+        width: 100%;
+    }
+    .testimonial-card {
+        width: calc(50% - var(--spacing-md) / 2); /* 2 colunas */
+        margin: 0;
+    }
+
+    #opportunities-list {
+        display: grid; /* Usar Grid para layout de oportunidades */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas automáticas */
+        gap: var(--spacing-lg);
+    }
+    #opportunities-list h2, #opportunities-list > p {
+        grid-column: 1 / -1; /* Títulos ocupam todas as colunas */
+    }
+
+    .opportunity-card {
+        flex-direction: row; /* Volta a imagem ao lado do texto */
+        text-align: left;
+    }
+    .opportunity-image {
+        margin-bottom: 0; /* Remove margem vertical da imagem */
+    }
+
+
+    /* Layout do Formulário em desktop */
+    #contactForm fieldset {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas para inputs */
+        gap: var(--spacing-md) var(--spacing-lg);
+        align-items: start;
+    }
+    #contactForm legend {
+        grid-column: 1 / -1; /* Ocupa todas as colunas */
+    }
+    #contactForm label {
+        margin-top: 0; /* Reset de margem padrão */
+    }
+    /* Campos que devem ocupar 2 colunas */
+    #contactForm label[for="mensagem"],
+    #contactForm textarea,
+    #dados-enviados {
+        grid-column: 1 / -1;
+    }
+
+    .radio-group {
+        grid-column: 2 / 3; /* Coloca o grupo de rádio na segunda coluna */
+        margin-top: 0;
+        align-items: center; /* Alinha os itens do rádio */
+        justify-content: flex-start;
+    }
+    #contactForm label[for="periodo"] { /* A label do radio group fica na primeira coluna */
+         grid-column: 1 / 2;
+         margin-top: var(--spacing-md); /* Restaura um pouco de margem */
+    }
+
+    .form-buttons {
+        grid-column: 1 / -1; /* Botões ocupam todas as colunas */
+        justify-content: flex-end; /* Alinha à direita */
+        margin-top: var(--spacing-md);
+    }
+    .form-buttons button {
+        flex: none; /* Remove flex-grow */
+    }
+
+    #about-us {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-lg);
+    }
+    #about-us h2, #about-us > p, .about-image {
+        width: 100%; /* Ocupam largura total */
+    }
+    #about-us article {
+        width: calc(50% - var(--spacing-lg) / 2); /* Duas colunas */
+        border-bottom: none; /* Remove borda entre artigos */
+    }
+    #about-us article:nth-of-type(even) { /* Borda vertical para separar */
+        border-left: 1px solid var(--border-color);
+        padding-left: var(--spacing-lg);
+    }
+    #about-us ul {
+        padding-left: var(--spacing-md); /* Mais padding para a lista */
+    }
+    #our-team {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-lg);
+    }
+    #our-team h3 {
+        width: 100%;
+    }
+    .team-member {
+        width: calc(50% - var(--spacing-lg) / 2);
+    }
+
+}
