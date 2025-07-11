@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conexão Cidadã - Conectando Voluntários e Causas</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1><a href="index.html">Conexão Cidadã</a></h1>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo-conexao-cidada.png" alt="Logo Conexão Cidadã">
+                    </a>
+            </div>
             <ul>
-                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html" class="active">Início</a></li>
+                <li>
+                    <a href="pages/oportunidades.html">Oportunidades <span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/oportunidades.html?categoria=meio-ambiente">Meio Ambiente</a></li>
+                        <li><a href="pages/oportunidades.html?categoria=educacao">Educação</a></li>
+                        <li><a href="pages/oportunidades.html?categoria=saude">Saúde e Bem-Estar</a></li>
+                        <li><a href="pages/oportunidades.html?categoria=animais">Animais</a></li>
+                        <li><a href="pages/oportunidades.html?categoria=diversidade">Direitos Humanos e Diversidade</a></li>
+                        <li><a href="pages/oportunidades.html">Todas as Oportunidades</a></li>
+                    </ul>
+                </li>
                 <li><a href="pages/sobre.html">Sobre</a></li>
-                <li><a href="pages/oportunidades.html">Oportunidades</a></li>
                 <li><a href="pages/contato.html">Contato</a></li>
             </ul>
         </nav>
@@ -21,6 +39,7 @@
 
     <main>
         <section id="hero">
+            <img src="images/hero-voluntariado.jpg" alt="Pessoas voluntariando em diversas atividades" class="hero-image">
             <article>
                 <h2>Faça a Diferença na Sua Comunidade</h2>
                 <p>Encontre oportunidades de voluntariado perto de você e transforme vidas.</p>
@@ -31,16 +50,32 @@
         <section id="features">
             <h2>Como Funciona?</h2>
             <article>
+                <img src="images/icon-encontrar.png" alt="Ícone de lupa para encontrar" class="feature-icon">
                 <h3>Encontre Causas</h3>
                 <p>Descubra projetos sociais e organizações que precisam de sua ajuda.</p>
             </article>
             <article>
+                <img src="images/icon-conectar.png" alt="Ícone de mãos se conectando" class="feature-icon">
                 <h3>Conecte-se</h3>
                 <p>Entre em contato com os responsáveis e comece a fazer a diferença.</p>
-            </article>
             <article>
+            <article>
+                <img src="images/icon-transformar.png" alt="Ícone de planta crescendo" class="feature-icon">
                 <h3>Transforme</h3>
                 <p>Seu tempo e suas habilidades podem mudar o mundo ao seu redor.</p>
+            </article>
+        </section>
+        <section id="testimonials">
+            <h2>Quem Faz a Diferença</h2>
+            <article class="testimonial-card">
+                <img src="images/avatar-maria.jpg" alt="Foto de Maria" class="testimonial-avatar">
+                <h3>Maria, Voluntária</h3>
+                <p>"Encontrei uma causa incrível através da Conexão Cidadã e minha vida mudou para melhor."</p>
+            </article>
+            <article class="testimonial-card">
+                <img src="images/avatar-joao.jpg" alt="Foto de João" class="testimonial-avatar">
+                <h3>João, Representante de ONG</h3>
+                <p>"A plataforma nos ajudou a encontrar voluntários dedicados, essenciais para nossos projetos."</p>
             </article>
         </section>
     </main>

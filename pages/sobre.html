@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - Conexão Cidadã</title>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1><a href="../index.html">Conexão Cidadã</a></h1>
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo-conexao-cidada.png" alt="Logo Conexão Cidadã">
+                </a>
+            </div>
             <ul>
                 <li><a href="../index.html">Início</a></li>
-                <li><a href="../pages/sobre.html">Sobre</a></li>
-                <li><a href="../pages/oportunidades.html">Oportunidades</a></li>
+                <li>
+                    <a href="../pages/oportunidades.html">Oportunidades <span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../pages/oportunidades.html?categoria=meio-ambiente">Meio Ambiente</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=educacao">Educação</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=saude">Saúde e Bem-Estar</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=animais">Animais</a></li>
+                        <li><a href="../pages/oportunidades.html?categoria=diversidade">Direitos Humanos e Diversidade</a></li>
+                        <li><a href="../pages/oportunidades.html">Todas as Oportunidades</a></li>
+                    </ul>
+                </li>
+                <li><a href="../pages/sobre.html" class="active">Sobre</a></li>
                 <li><a href="../pages/contato.html">Contato</a></li>
             </ul>
         </nav>
@@ -22,6 +40,7 @@
     <main>
         <section id="about-us">
             <h2>Nossa Missão</h2>
+            <img src="../images/missao-voluntariado.jpg" alt="Pessoas trabalhando juntas em uma missão social" class="about-image">
             <p>A Conexão Cidadã nasceu com o propósito de ser a ponte entre o desejo de ajudar e a necessidade de apoio. Acreditamos que pequenas ações em conjunto podem gerar um impacto social gigantesco em nossas comunidades.</p>
 
             <article>
@@ -32,12 +51,25 @@
             <article>
                 <h3>Valores</h3>
                 <ul>
-                    <li>**Solidariedade:** Acreditamos no poder da união para o bem comum.</li>
-                    <li>**Transparência:** Garantimos clareza em todas as conexões e informações.</li>
-                    <li>**Empoderamento:** Capacitamos indivíduos e comunidades a fazerem a diferença.</li>
-                    <li>**Inovação:** Buscamos constantemente novas formas de conectar e inspirar.</li>
+                    <li><strong>Solidariedade:</strong> Acreditamos no poder da união para o bem comum.</li>
+                    <li><strong>Transparência:</strong> Garantimos clareza em todas as conexões e informações.</li>
+                    <li><strong>Empoderamento:</strong> Capacitamos indivíduos e comunidades a fazerem a diferença.</li>
+                    <li><strong>Inovação:</strong> Buscamos constantemente novas formas de conectar e inspirar.</li>
                 </ul>
             </article>
+            <section id="our-team">
+                <h3>Nossa Equipe</h3>
+                <article class="team-member">
+                    <img src="../images/team-member-1.jpg" alt="Foto de um membro da equipe" class="team-avatar">
+                    <h4>Ana Paula</h4>
+                    <p>Fundadora e Diretora Executiva</p>
+                </article>
+                <article class="team-member">
+                    <img src="../images/team-member-2.jpg" alt="Foto de outro membro da equipe" class="team-avatar">
+                    <h4>Carlos Eduardo</h4>
+                    <p>Gerente de Projetos Sociais</p>
+                </article>
+            </section>
         </section>
     </main>
 

@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Conexão Cidadã</title>
-    <link rel="stylesheet" href="../styles/style.css"> </head>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
+</head>
 <body>
     <header>
         <nav>
-            <h1><a href="../index.html">Conexão Cidadã</a></h1>
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo-conexao-cidada.png" alt="Logo Conexão Cidadã">
+                </a>
+            </div>
             <ul>
                 <li><a href="../index.html">Início</a></li>
                 <li>
@@ -23,7 +32,8 @@
                     </ul>
                 </li>
                 <li><a href="../pages/sobre.html">Sobre</a></li>
-                <li><a href="../pages/contato.html" class="active">Contato</a></li> </ul>
+                <li><a href="../pages/contato.html" class="active">Contato</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -55,30 +65,30 @@
                     </select>
 
                     <label for="periodo">Disponibilidade (para voluntariado):</label>
-                    <div> <input type="radio" id="manhã" name="periodo" value="manhã">
-                        <label for="manhã">Manhã</label>
+                    <p class="radio-group">
+                        <input type="radio" id="manha" name="periodo" value="manha">
+                        <label for="manha">Manhã</label>
                         <input type="radio" id="tarde" name="periodo" value="tarde">
                         <label for="tarde">Tarde</label>
                         <input type="radio" id="noite" name="periodo" value="noite">
                         <label for="noite">Noite</label>
                         <input type="radio" id="qualquer" name="periodo" value="qualquer">
                         <label for="qualquer">Qualquer</label>
-                    </div>
+                    </p>
 
                     <label for="mensagem">Sua Mensagem:</label>
                     <textarea id="mensagem" name="mensagem" rows="6" placeholder="Descreva sua mensagem ou interesse aqui..." required></textarea>
 
-                    <div class="form-buttons">
+                    <p class="form-buttons">
                         <button type="submit">Enviar Mensagem</button>
                         <button type="reset">Limpar Formulário</button>
-                    </div>
+                    </p>
                 </fieldset>
             </form>
 
             <section id="dados-enviados">
                 <h3>Dados Recebidos (apenas para demonstração)</h3>
-                <div id="output">
-                    </div>
+                <output id="output"></output>
             </section>
         </section>
     </main>
