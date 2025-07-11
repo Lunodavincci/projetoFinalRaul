@@ -105,7 +105,7 @@ header nav {
 }
 
 .logo img {
-    height: 180px; /* Tamanho do logo */
+    height: 140px; /* Tamanho do logo */
     margin-right: var(--spacing-sm);
 }
 
